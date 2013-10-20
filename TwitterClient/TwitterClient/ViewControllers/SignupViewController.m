@@ -11,10 +11,11 @@
 
 @interface SignupViewController ()
 
-//@property (weak, nonatomic) IBOutlet UITableView *credentialsView;
-
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *password;
+
+
+- (CredentialCell *)getCellFromTextField:(UITextField *)textField;
 
 @end
 
@@ -94,9 +95,7 @@
     return cell;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-//    CredentialCell *cell = (CredentialCell*) textField.superview.superview;
-
+- (CredentialCell *)getCellFromTextField:(UITextField *)textField {
     CredentialCell  *cell = nil;
     UIView *parentView = textField.superview;
     while(parentView) {
@@ -106,11 +105,26 @@
         }
         parentView = parentView.superview;
     }
+    return cell;
+}
 
-
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // Automatically add the "@" to the username to reflect it's their twitter handle
+    CredentialCell *cell= [self getCellFromTextField:textField];
     if (cell.cellType == CredentialCellUserName && [textField.text isEqualToString:@""]) {
         textField.text = @"@";
     }
 }
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    // Automatically remove the "@" to the username if the user never added anything to the field
+    CredentialCell *cell= [self getCellFromTextField:textField];
+    if (cell.cellType == CredentialCellUserName && [textField.text isEqualToString:@"@"]) {
+        textField.text = @"";
+    }
+
+}
+
+
 
 @end
