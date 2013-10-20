@@ -24,7 +24,10 @@
         BOOL addedCredentials = NO;
         // Show the signup view since we don't have credentials yet
         SignupViewController *svc = [[SignupViewController alloc] init];
-        [self presentViewController: svc animated: YES completion:^{
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:svc];
+
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self presentViewController:navController animated:YES completion:^{
 
             if (addedCredentials) {
                 // Save the fact we now have credentials on the app
@@ -32,11 +35,10 @@
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
 
-        }];
 
+            }];
+        });
 
-
-        //Action here
 
     } else {
         NSLog(@"Yes signedup NSUserDefaults");
