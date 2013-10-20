@@ -35,7 +35,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Add Account";
 
+    // Change the Nav Bar color on both iOS 6 and 7
+    UIColor *twitterColor = [UIColor colorWithRed:(8.0 / 255.0) green:(172.0 / 255.0) blue:(237.0 / 255.0) alpha:1.0];
+    SEL selector =  NSSelectorFromString(@"setBarTintColor:");
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    if ([self.navigationController.navigationBar respondsToSelector:selector])
+    {
+        self.navigationController.navigationBar.barTintColor = twitterColor;
+    } else {
+        self.navigationController.navigationBar.tintColor = twitterColor;
+    }
 
     // Add in our custom cell
     UINib *CredentialCellNib = [UINib nibWithNibName:@"CredentialCell" bundle:nil];
