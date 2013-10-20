@@ -2,12 +2,13 @@
 //  SignupViewController.m
 //  TwitterClient
 //
-//  Created by Felix Santiago on 10/19/13.
+//  Created by Felix Santiago on 10/20/13.
 //  Copyright (c) 2013 Felix Santiago. All rights reserved.
 //
 
 #import "SignupViewController.h"
 #import "CredentialCell.h"
+
 
 @interface SignupViewController ()
 
@@ -27,7 +28,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
 
     }
     return self;
@@ -36,6 +36,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // Add in our custom cell
+    UINib *CredentialCellNib = [UINib nibWithNibName:@"CredentialCell" bundle:nil];
+    [self.tableView registerNib:CredentialCellNib forCellReuseIdentifier:@"LoginCell"];
+
     self.title = @"Add Account";
 
     // Change the Nav Bar color on both iOS 6 and 7
@@ -49,9 +54,10 @@
         self.navigationController.navigationBar.tintColor = twitterColor;
     }
 
-    // Add in our custom cell
-    UINib *CredentialCellNib = [UINib nibWithNibName:@"CredentialCell" bundle:nil];
-    [self.tableView registerNib:CredentialCellNib forCellReuseIdentifier:@"LoginCell"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+
+    self.signInButton.enabled = NO;
 
 }
 
@@ -75,6 +81,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     CredentialCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoginCell"];
+
+    // Add a text change observer
+    [cell.cellValue addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 
     if (indexPath.row == 0) {
         // Configure the UserName cell
@@ -118,13 +127,35 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     // Automatically remove the "@" to the username if the user never added anything to the field
-    CredentialCell *cell= [self getCellFromTextField:textField];
-    if (cell.cellType == CredentialCellUserName && [textField.text isEqualToString:@"@"]) {
-        textField.text = @"";
-    }
-
+    [self updateCredentialsFromTextField:textField];
+    self.signInButton.enabled = [self isReadyToSignIn];
 }
 
+- (void)updateCredentialsFromTextField:(UITextField *)textField {
+    CredentialCell *cell= [self getCellFromTextField:textField];
+    if (cell.cellType == CredentialCellUserName){
+        if ([textField.text isEqualToString:@"@"] || [textField.text isEqualToString:@""]) {
+            textField.text = @"";
+            self.userName = nil;
+        } else {
+            self.userName = textField.text;
+        }
+    } else if (cell.cellType == CredentialCellPassword){
+        if ([textField.text isEqualToString:@""]) {
+            self.password = nil;
+        } else {
+            self.password = textField.text;
+        }
+    }
+}
 
+- (BOOL)isReadyToSignIn {
+    return self.userName && self.password;
+}
+
+-(void)textFieldDidChange :(UITextField *)textField{
+    [self updateCredentialsFromTextField:textField];
+    self.signInButton.enabled = [self isReadyToSignIn];
+}
 
 @end

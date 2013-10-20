@@ -21,11 +21,11 @@
 		9088B716181308B6004FE80F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9088B6F5181308B6004FE80F /* UIKit.framework */; };
 		9088B71E181308B6004FE80F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9088B71C181308B6004FE80F /* InfoPlist.strings */; };
 		9088B720181308B6004FE80F /* TwitterClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9088B71F181308B6004FE80F /* TwitterClientTests.m */; };
-		90C8B2D4181448CE00D1069F /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D890EC4A65C0835C5B01C887 /* SignupViewController.m */; };
 		D890E2F07B1BE4219E3C58F9 /* TCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E777CF4B0130544B4B5D /* TCHomeViewController.m */; };
 		D890E5021A0383C134DB6764 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E101766910722F689629 /* Profile.m */; };
 		D890E5E9118033C2F743422D /* CredentialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D890EECB1F0A03F0177829EC /* CredentialCell.xib */; };
-		D890E973324646396B42AE1D /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D890EBB6B5A74D1464773642 /* SignupViewController.xib */; };
+		D890E6ED7D3744AFA44B3DC1 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E47B9AD52A888E8BE021 /* SignupViewController.m */; };
+		D890E9366082DA19BD17EFF5 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D890EB26F0B4B5A99991AF1F /* SignupViewController.xib */; };
 		D890EBA83F4F2D2B66F67A58 /* CredentialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E16F1F65DC9BA0039BE4 /* CredentialCell.m */; };
 		D890ECAEEF1BBE6FDED85E38 /* TCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E4F2658589E6FF662BE6 /* TCProfileViewController.m */; };
 		D890EFF6240A2E0B78F0FEDF /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E95D4EDDF5A816B2AFB9 /* Tweet.m */; };
@@ -65,13 +65,13 @@
 		D890E101766910722F689629 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		D890E16F1F65DC9BA0039BE4 /* CredentialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialCell.m; sourceTree = "<group>"; };
 		D890E3414410F4AE9842925E /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		D890E47B9AD52A888E8BE021 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		D890E4F2658589E6FF662BE6 /* TCProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCProfileViewController.m; sourceTree = "<group>"; };
 		D890E545A0B9C99CFED87834 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
-		D890E775C9B87C391F4F7B5E /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		D890E777CF4B0130544B4B5D /* TCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeViewController.m; sourceTree = "<group>"; };
 		D890E95D4EDDF5A816B2AFB9 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
-		D890EBB6B5A74D1464773642 /* SignupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
-		D890EC4A65C0835C5B01C887 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		D890EB26F0B4B5A99991AF1F /* SignupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
+		D890EBDC7E2585B1B29D4121 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		D890EECB1F0A03F0177829EC /* CredentialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CredentialCell.xib; sourceTree = "<group>"; };
 		D890EF4F1E92C0C3F766C286 /* TCProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCProfileViewController.h; sourceTree = "<group>"; };
 		D890EFC626239B4E4E6FC123 /* TCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeViewController.h; sourceTree = "<group>"; };
@@ -185,9 +185,8 @@
 				D890E777CF4B0130544B4B5D /* TCHomeViewController.m */,
 				D890EF4F1E92C0C3F766C286 /* TCProfileViewController.h */,
 				D890E4F2658589E6FF662BE6 /* TCProfileViewController.m */,
-				D890E775C9B87C391F4F7B5E /* SignupViewController.h */,
-				D890EC4A65C0835C5B01C887 /* SignupViewController.m */,
-				D890EBB6B5A74D1464773642 /* SignupViewController.xib */,
+				D890EBDC7E2585B1B29D4121 /* SignupViewController.h */,
+				D890E47B9AD52A888E8BE021 /* SignupViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -198,6 +197,7 @@
 				D890EECB1F0A03F0177829EC /* CredentialCell.xib */,
 				D890E0EE9B556F5C6C163A73 /* CredentialCell.h */,
 				D890E16F1F65DC9BA0039BE4 /* CredentialCell.m */,
+				D890EB26F0B4B5A99991AF1F /* SignupViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 				9088B6FC181308B6004FE80F /* InfoPlist.strings in Resources */,
 				9088B705181308B6004FE80F /* Main.storyboard in Resources */,
 				D890E5E9118033C2F743422D /* CredentialCell.xib in Resources */,
-				D890E973324646396B42AE1D /* SignupViewController.xib in Resources */,
+				D890E9366082DA19BD17EFF5 /* SignupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +348,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90C8B2D4181448CE00D1069F /* SignupViewController.m in Sources */,
 				9088B6FE181308B6004FE80F /* main.m in Sources */,
 				9088B702181308B6004FE80F /* TCAppDelegate.m in Sources */,
 				D890EFF6240A2E0B78F0FEDF /* Tweet.m in Sources */,
@@ -356,6 +355,7 @@
 				D890E2F07B1BE4219E3C58F9 /* TCHomeViewController.m in Sources */,
 				D890ECAEEF1BBE6FDED85E38 /* TCProfileViewController.m in Sources */,
 				D890EBA83F4F2D2B66F67A58 /* CredentialCell.m in Sources */,
+				D890E6ED7D3744AFA44B3DC1 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
