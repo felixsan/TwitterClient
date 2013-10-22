@@ -1,5 +1,5 @@
 //
-//  SignupViewController.h
+//  TweetDetailVC.h
 //  TwitterClient
 //
 //  Created by Felix Santiago on 10/20/13.
@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
-@interface SignupViewController : UIViewController
+@interface TweetDetailVC : UIViewController
+
+@property (nonatomic, strong) Tweet *tweet;
+
 @end

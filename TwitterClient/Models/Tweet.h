@@ -5,7 +5,19 @@
 
 
 #import <Foundation/Foundation.h>
+#import "RestObject.h"
 
 
-@interface Tweet : NSObject
+@interface Tweet : RestObject
+
+@property (nonatomic, strong, readonly) NSString *text;
+@property (nonatomic, strong, readonly) NSString *avatarURL;
+@property (nonatomic, strong, readonly) NSString *authorName;
+@property (nonatomic, strong, readonly) NSString *authorHandle;
+@property (nonatomic, strong, readonly) NSString *tweetTime;
+@property (nonatomic, strong, readonly) NSString *tweetRelativeTime;
+@property (nonatomic, strong, readonly) NSString *tweetId;
+
++ (NSMutableArray *)tweetsFromArray:(NSArray *)array;
+
 @end

@@ -3,16 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "second.png"
+      "filename" : "twitter_title.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "second@2x.png"
+      "filename" : "twitter_title@2x.png"
     }
   ],
   "info" : {
     "version" : 1,
-    "author" : "xcode"
+    "authorName" : "xcode"
   }
 }

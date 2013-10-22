@@ -1,5 +1,5 @@
 //
-//  TCProfileViewController.h
+//  UserProfileVC.h
 //  TwitterClient
 //
 //  Created by Felix Santiago on 10/19/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TCProfileViewController : UIViewController
+@interface UserProfileVC : UIViewController
 
 @end
