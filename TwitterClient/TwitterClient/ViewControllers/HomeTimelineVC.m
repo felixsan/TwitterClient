@@ -13,6 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "TweetCell.h"
 #import "User.h"
+#import "TweetDetailVC.h"
 
 @interface HomeTimelineVC ()
 
@@ -144,8 +145,12 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"ShowTweet"]){
+        TweetDetailVC *tweetDetail = [segue destinationViewController];
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        Tweet *tweet = [self.tweets objectAtIndex:(NSUInteger) path.row];
+        tweetDetail.tweet = tweet;
+    }
 }
 
 

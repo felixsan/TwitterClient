@@ -7,9 +7,15 @@
 //
 
 #import "TweetDetailVC.h"
+#import "UIImageView+AFNetworking.h"
+#import "ComposeTweetVC.h"
 
 @interface TweetDetailVC ()
 
+@property (weak, nonatomic) IBOutlet UILabel *authorName;
+@property (weak, nonatomic) IBOutlet UILabel *authorHandle;
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UILabel *tweetText;
 - (IBAction)returnToHomeTimeline:(id)sender;
 @end
 
@@ -27,7 +33,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
+    self.authorName.text = self.tweet.authorName;
+    self.authorHandle.text = self.tweet.authorHandle;
+    self.tweetText.text = self.tweet.text;
+    [self.avatar setImageWithURL:[NSURL URLWithString:self.tweet.avatarURL] placeholderImage:[UIImage imageNamed:@"TwitterTitleDark"]];
 }
 
 - (void)didReceiveMemoryWarning

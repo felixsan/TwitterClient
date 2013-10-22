@@ -67,7 +67,7 @@
                                     <outlet property="avatar" destination="nxR-SK-s2r" id="kLK-vG-wcX"/>
                                     <outlet property="tweetText" destination="Qat-JZ-XUN" id="LgJ-Kb-ZlC"/>
                                     <outlet property="tweetTime" destination="BsE-dy-Njq" id="1h2-Nh-b5L"/>
-                                    <segue destination="pP2-3P-he1" kind="push" id="FDL-Uh-DtJ"/>
+                                    <segue destination="pP2-3P-he1" kind="push" identifier="ShowTweet" id="FDL-Uh-DtJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -87,7 +87,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="jxi-2J-wP0">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="UwU-CF-9ET" kind="modal" id="xDI-WA-M0a"/>
+                                <segue destination="UwU-CF-9ET" kind="modal" identifier="Compose" id="xDI-WA-M0a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -219,6 +219,9 @@
                                 <state key="normal" title="Reply">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="UwU-CF-9ET" kind="modal" identifier="Reply" id="snz-dA-iCu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Person Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGO-Rj-SYX">
                                 <rect key="frame" x="74" y="118" width="105" height="21"/>
@@ -261,6 +264,12 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="authorHandle" destination="bdC-cb-ULn" id="K7u-ao-U9a"/>
+                        <outlet property="authorName" destination="rGO-Rj-SYX" id="o31-JD-hfj"/>
+                        <outlet property="avatar" destination="WkX-yV-Vmn" id="uPD-lR-eq7"/>
+                        <outlet property="tweetText" destination="5r8-RI-PPd" id="iG0-g2-Y3I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43i-jq-qDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -361,4 +370,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="xDI-WA-M0a"/>
+    </inferredMetricsTieBreakers>
 </document>
