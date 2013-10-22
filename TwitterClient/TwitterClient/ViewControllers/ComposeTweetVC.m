@@ -7,6 +7,7 @@
 //
 
 #import "ComposeTweetVC.h"
+#import "TwitterNetworkClient.h"
 
 @interface ComposeTweetVC ()
 - (IBAction)dismissView:(id)sender;
@@ -30,13 +31,22 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)dismissView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)postUpdate:(id)sender {
+    // Get text from text view
+    Tweet *newStatus = [Tweet buildTweetFromStatus:self.statusText];
+    if ([Tweet isValidTweet:newStatus]) {
+        [[TwitterNetworkClient client] postUpdateWithStatus:newStatus.text
+                                                    success:nil
+                                                    failure:nil];
+    } else {
+        // Come up with an error stating that it is too long and the calculated length
+        NSLog(@"Status is too long - %d", newStatus.characterCount);
+    }
+
+
 }
 @end

@@ -10,5 +10,7 @@
 
 @interface ComposeTweetVC : UIViewController
 
-@property(nonatomic, strong) UILabel *inReplyTo;
+@property(nonatomic, strong) NSString *inReplyTo;
+@property(nonatomic, copy) NSString *statusText;
+
 @end
