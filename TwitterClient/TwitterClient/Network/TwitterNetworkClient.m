@@ -6,6 +6,7 @@
 
 #import "TwitterNetworkClient.h"
 #import "AFNetworking.h"
+#import "AFHTTPRequestOperation.h"
 
 #define TWITTER_BASE_URL [NSURL URLWithString:@"https://api.twitter.com/"]
 #define TWITTER_CONSUMER_KEY @"yi8Fw3QXXJf5ftT5WTuLww"
@@ -75,6 +76,8 @@ static NSString * const TWAccessTokenKey = @"TWAccessToken";
     [self getPath:TWITTER_VERIFY_CREDENTIALS_PATH parameters:nil success:success failure:failure];
 }
 
+#pragma mark - Twitter Calls
+
 - (void)getHomeTimelineTweetsWithCount:(int)count sinceId:(NSString *)sinceId maxId:(NSString *)maxId trimUser:(BOOL)trimUser excludeReplies:(BOOL)exludeReplies contributorDetails:(BOOL)contributorDetails includeEntities:(BOOL)includeEntities success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"count": @(count)}];
     if (![sinceId isEqualToString: @"0"]) {
@@ -86,12 +89,24 @@ static NSString * const TWAccessTokenKey = @"TWAccessToken";
     [self getPath:@"1.1/statuses/home_timeline.json" parameters:params success:success failure:failure];
 }
 
-- (void)getUserProfileFromId:(int)id1 {
+- (void)postUpdateWithStatus:(NSString *)text success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"status": text}];
+    [self postPath:@"1.1/statuses/update.json" parameters:params success:success failure:failure];
+}
+
+- (void)getUserProfileFromId:(int)profileId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": [NSNumber numberWithInt:profileId]}];
+    [self getPath:@"1.1/users/show.json" parameters:params success:success failure:failure];
 
 }
 
-- (void)getUserProfileFromScreenName:(NSString *)screenName {
+- (void)getUserProfileFromScreenName:(NSString *)screenName success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"screen_name": screenName}];
+    [self getPath:@"1.1/users/show.json" parameters:params success:success failure:failure];
+
 }
+
+
 
 
 #pragma mark - Private methods
