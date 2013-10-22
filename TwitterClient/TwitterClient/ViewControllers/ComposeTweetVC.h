@@ -10,4 +10,5 @@
 
 @interface ComposeTweetVC : UIViewController
 
+@property(nonatomic, strong) UILabel *inReplyTo;
 @end

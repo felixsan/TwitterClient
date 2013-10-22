@@ -51,4 +51,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Reply"]){
+        ComposeTweetVC *replyVc = [segue destinationViewController];
+        replyVc.inReplyTo = self.authorHandle;
+    }
+}
+
 @end
