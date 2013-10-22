@@ -17,7 +17,10 @@
 @property (nonatomic, strong, readonly) NSString *tweetTime;
 @property (nonatomic, strong, readonly) NSString *tweetRelativeTime;
 @property (nonatomic, strong, readonly) NSString *tweetId;
-
+@property (nonatomic) int characterCount;
 + (NSMutableArray *)tweetsFromArray:(NSArray *)array;
 
++ (BOOL)isValidTweet:(Tweet *)tweet;
+
++ (Tweet *)buildTweetFromStatus:(NSString *)statusText;
 @end

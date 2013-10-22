@@ -47,6 +47,10 @@
     return [Tweet returnRelativeTime:self.tweetTime];
 }
 
+- (int) characterCount {
+    //TODO Calculate the links in the character count
+    return [self.text length];
+}
 
 +(NSString *)returnRelativeTime:(NSString *)dateString
 {
@@ -71,5 +75,15 @@
     }
 
 }
+
++ (BOOL)isValidTweet:(Tweet *)tweet {
+    return tweet.characterCount <= 140;
+}
+
++ (Tweet *)buildTweetFromStatus:(NSString *)statusText{
+    return [[Tweet alloc] initWithDictionary:@{@"text": statusText}];
+}
+
+
 
 @end
