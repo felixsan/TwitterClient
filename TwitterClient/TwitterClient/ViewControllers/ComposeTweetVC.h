@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ComposeTweetVC : UIViewController
+@interface ComposeTweetVC : UIViewController <UITextViewDelegate>
 
 @property(nonatomic, strong) NSString *inReplyTo;
-@property(nonatomic, copy) NSString *statusText;
+@property(nonatomic, copy) NSString *replyTweetId;
+@property(nonatomic, weak) IBOutlet UITextView *statusText;
+
+- (IBAction)postUpdate:(id)sender;
 
 @end

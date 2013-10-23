@@ -107,14 +107,8 @@
     CALayer * l = [cell.avatar layer];
     [l setMasksToBounds:YES];
     [l setCornerRadius:3.0];
-
-    NSLog(@"Tweet - %@", cell.tweetText.text);
-    NSLog(@"Author - %@", cell.authorName.text);
-//    NSLog(@"Tweet - %@", tweet);
     return cell;
 }
-
-//heightforrow
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
     CGPoint offset = aScrollView.contentOffset;
@@ -123,13 +117,6 @@
     UIEdgeInsets inset = aScrollView.contentInset;
     float y = offset.y + bounds.size.height - inset.bottom;
     float h = size.height;
-    // NSLog(@"offset: %f", offset.y);
-    // NSLog(@"content.height: %f", size.height);
-    // NSLog(@"bounds.height: %f", bounds.size.height);
-    // NSLog(@"inset.top: %f", inset.top);
-    // NSLog(@"inset.bottom: %f", inset.bottom);
-    // NSLog(@"pos: %f of %f", y, h);
-
     float reload_distance = 10;
     if(y > h + reload_distance) {
         if ([self.tweets count] > 0) {
@@ -171,7 +158,7 @@
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     }                                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"ERROR - %@", error);
+        NSLog(@"ERROR - %@", error);
     }];
 }
 
@@ -191,7 +178,7 @@
         [self.tableView reloadData];
         }
                                                           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"ERROR - %@", error);
+        NSLog(@"ERROR - %@", error);
     }];
 }
 
@@ -210,7 +197,6 @@
         self.tweets = [Tweet tweetsFromArray:response];
         [self.tableView reloadData];
         NSLog(@"%d", [self.tweets count]);
-          NSLog(@"Scrolls to top - %d", self.tableView.scrollsToTop);
     }                                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"ERROR - %@", error);
     }];

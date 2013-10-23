@@ -8,6 +8,8 @@
 #import "Tweet.h"
 #import "Profile.h"
 
+@class AFHTTPRequestOperation;
+
 
 @interface TwitterNetworkClient : AFOAuth1Client
 
@@ -17,7 +19,9 @@
 - (void)verifyLogin:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (void)getHomeTimelineTweetsWithCount:(int)count sinceId:(NSString *)sinceId maxId:(NSString *)maxId trimUser:(BOOL)trimUser excludeReplies:(BOOL)exludeReplies contributorDetails:(BOOL)contributorDetails includeEntities:(BOOL)includeEntities success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
-- (void)postUpdateWithStatus:(NSString *)text success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)postUpdateWithStatus:(NSString *)text inReplyTo:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)retweetStatusWithId:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)setFavorite:(BOOL)newFavoriteStatus forTweetId:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 - (void)getUserProfileFromId:(int)id;
 - (void)getUserProfileFromScreenName:(NSString *)screenName;

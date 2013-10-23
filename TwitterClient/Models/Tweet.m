@@ -13,7 +13,7 @@
 + (NSMutableArray *)tweetsFromArray:(NSArray *)array {
     NSMutableArray *tweets = [[NSMutableArray alloc] initWithCapacity:array.count];
     for (NSDictionary *params in array) {
-        [tweets addObject:[[Tweet alloc] initWithDictionary:params]];
+        [tweets addObject:[Tweet buildTweetFromResponse:params]];
     }
     return tweets;
 }
@@ -39,24 +39,40 @@
     return ([self valueOrNilForKeyPath:@"user.profile_image_url"]) ? [self valueOrNilForKeyPath:@"user.profile_image_url"] : @"";
 }
 
-- (NSString *)tweetTime {
-    return ([self valueOrNilForKeyPath:@"created_at"]) ? [self valueOrNilForKeyPath:@"created_at"] : @"";
+- (NSDate *)tweetTime {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
+    return [formatter dateFromString:[self valueOrNilForKeyPath:@"created_at"]];
 }
 
 - (NSString *)tweetRelativeTime {
     return [Tweet returnRelativeTime:self.tweetTime];
 }
 
+- (int)numFavorites {
+    return [[self.data valueOrNilForKeyPath:@"favourites_count"] intValue];
+}
+
+- (int)numRetweets {
+    return [[self.data valueOrNilForKeyPath:@"retweet_count"] intValue];
+}
+
+- (BOOL)isFavorite {
+    return [[self valueOrNilForKeyPath:@"favorited"] boolValue];
+}
+
+- (BOOL)isRetweeted {
+    return [[self valueOrNilForKeyPath:@"retweeted"] boolValue];
+}
+
+
 - (int) characterCount {
     //TODO Calculate the links in the character count
     return [self.text length];
 }
 
-+(NSString *)returnRelativeTime:(NSString *)dateString
++(NSString *)returnRelativeTime:(NSDate *)date
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
-    NSDate *date = [formatter dateFromString:dateString];
     int timeSince = [date timeIntervalSinceNow] * -1;
 
     int days    = (timeSince / (3600 * 24));
@@ -77,7 +93,6 @@
     else {
         return [NSString stringWithFormat:@"%01dh", hours];
     }
-
 }
 
 + (BOOL)isValidTweet:(Tweet *)tweet {
@@ -89,5 +104,8 @@
 }
 
 
++ (Tweet *)buildTweetFromResponse:(NSDictionary *)response {
+    return [[Tweet alloc] initWithDictionary:response];
+}
 
 @end

@@ -89,9 +89,17 @@ static NSString * const TWAccessTokenKey = @"TWAccessToken";
     [self getPath:@"1.1/statuses/home_timeline.json" parameters:params success:success failure:failure];
 }
 
-- (void)postUpdateWithStatus:(NSString *)text success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+- (void)postUpdateWithStatus:(NSString *)text inReplyTo:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"status": text}];
+    if (tweetId != nil) {
+        [params setObject:tweetId forKey:@"in_reply_to_status_id"];
+    }
     [self postPath:@"1.1/statuses/update.json" parameters:params success:success failure:failure];
+}
+
+- (void)retweetStatusWithId:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSString *retweetUrl = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweetId];
+    [self postPath:retweetUrl parameters:nil success:success failure:failure];
 }
 
 - (void)getUserProfileFromId:(int)profileId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
@@ -106,6 +114,12 @@ static NSString * const TWAccessTokenKey = @"TWAccessToken";
 
 }
 
+- (void)setFavorite:(BOOL)newFavoriteStatus forTweetId:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"id": tweetId}];
+    NSString *path = newFavoriteStatus ? @"1.1/favorites/create.json" : @"1.1/favorites/destroy.json";
+    [self postPath:path parameters:params success:success failure:failure];
+
+}
 
 
 
