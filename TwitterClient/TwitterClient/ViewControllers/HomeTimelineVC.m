@@ -225,10 +225,13 @@
 
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 0;
-//    sizeWithFont forWidth
-//    return height plus a static offset
-//}
+- (CGFloat)tableView:(UITableView *)t heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *text = [[self.tweets objectAtIndex:(NSUInteger) indexPath.row] text];
+    CGSize textSize = [text sizeWithFont:[UIFont systemFontOfSize:14.0f]
+                       constrainedToSize:CGSizeMake(self.tableView.frame.size.width - 90, 1000.0f)];
+    CGFloat calculatedSize = textSize.height + 55;
+    CGFloat minSize = 78;
+    return calculatedSize > minSize ? calculatedSize : minSize;
+}
 
 @end
