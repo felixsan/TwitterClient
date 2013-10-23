@@ -45,10 +45,8 @@
 
         // Show the signup view since we don't have credentials yet
         SignupViewController *svc = [[SignupViewController alloc] init];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:svc];
-
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            [self presentViewController:navController animated:YES completion:nil];
+            [self presentViewController:svc animated:YES completion:nil];
         });
     } else {
         NSLog(@"Yes signedup NSUserDefaults");
@@ -75,11 +73,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-
-- (void)composeTweet {
-
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -98,8 +91,6 @@
     cell.tweetText.text = tweet.text;
     cell.authorName.text = tweet.authorName;
     cell.authorHandle.text = [NSString stringWithFormat:@"@%@", tweet.authorHandle];
-    NSLog(@"Tweet Time- %@", tweet.tweetTime);
-    NSLog(@"Tweet Relative Time- %@", tweet.tweetRelativeTime);
     cell.tweetTime.text = tweet.tweetRelativeTime;
     [cell.avatar setImageWithURL:[NSURL URLWithString:tweet.avatarURL] placeholderImage:[UIImage imageNamed:@"TwitterTitleDark"]];
 
@@ -121,7 +112,7 @@
     if(y > h + reload_distance) {
         if ([self.tweets count] > 0) {
 //            [self getOlderTweets];
-            NSLog(@"Reached Bottom");
+//            NSLog(@"Reached Bottom");
         }
     }
 }
@@ -206,8 +197,7 @@
     NSLog(@"Hit logout");
     [User setCurrentUser:nil];
     SignupViewController *svc = [[SignupViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:svc];
-    [self presentViewController:navController animated:YES completion:nil];
+    [self presentViewController:svc animated:YES completion:nil];
 
 }
 

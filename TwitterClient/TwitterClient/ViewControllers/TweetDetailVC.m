@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
 @property (weak, nonatomic) IBOutlet UILabel *tweetDate;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UILabel *retweets;
 @property (weak, nonatomic) IBOutlet UILabel *favorites;
 
@@ -98,8 +99,8 @@
     self.authorName.text = self.tweet.authorName;
     self.authorHandle.text = [NSString stringWithFormat:@"@%@", self.tweet.authorHandle];
     self.tweetText.text = self.tweet.text;
-    self.favorites.text = [NSString stringWithFormat:@"%d", self.tweet.numFavorites];
-    self.retweets.text = [NSString stringWithFormat:@"%d", self.tweet.numRetweets];
+//    self.favorites.text = [NSString stringWithFormat:@"%d", self.tweet.numFavorites];
+//    self.retweets.text = [NSString stringWithFormat:@"%d", self.tweet.numRetweets];
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateStyle:NSDateFormatterShortStyle];
@@ -110,7 +111,8 @@
 
     NSString *buttonText = self.tweet.isFavorite ? @"☆ Unfavorite" : @"★ Favorite";
     [self.favoriteButton setTitle:buttonText forState:UIControlStateNormal];
-
+    buttonText = self.tweet.isRetweeted ? @"Retweeted" : @"Retweet";
+    [self.retweetButton setTitle:buttonText forState:UIControlStateNormal];
     // Set rounded corners
     CALayer * l = [self.avatar layer];
     [l setMasksToBounds:YES];

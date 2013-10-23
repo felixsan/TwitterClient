@@ -13,6 +13,7 @@
 @property(nonatomic, strong) NSString *inReplyTo;
 @property(nonatomic, copy) NSString *replyTweetId;
 @property(nonatomic, weak) IBOutlet UITextView *statusText;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *tweetButton;
 
 - (IBAction)postUpdate:(id)sender;
 

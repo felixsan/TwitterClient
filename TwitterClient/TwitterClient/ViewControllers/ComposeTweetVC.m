@@ -11,6 +11,7 @@
 
 @interface ComposeTweetVC ()
 - (IBAction)dismissView:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *charRemaining;
 
 @end
 
@@ -33,12 +34,28 @@
         self.statusText.text = [[NSString alloc] initWithFormat:@"@%@ ", self.inReplyTo];
     }
     [self.statusText becomeFirstResponder];
+    self.tweetButton.enabled = NO;
     // Do any additional setup after loading the view.
 }
 
 - (IBAction)dismissView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    int charCount = self.statusText.text.length;
+    NSString *charactersLeft = [NSString stringWithFormat:@"%i", 140 - charCount];
+    if(charCount > 140) {
+        self.charRemaining.textColor=[UIColor redColor];
+    } else {
+        self.charRemaining.textColor=[UIColor blackColor];
+    }
+    self.charRemaining.text=charactersLeft;
+    self.tweetButton.enabled = !(charCount > 140 || charCount == 0);
+}
+
 
 - (IBAction)postUpdate:(id)sender {
     // Get text from text view
