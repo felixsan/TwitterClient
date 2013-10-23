@@ -62,13 +62,17 @@
     int days    = (timeSince / (3600 * 24));
     int hours   = (timeSince / 3600)- (days *24);
     int minutes = (timeSince % 3600) / 60;
-//    int seconds = (timeSince % 3600) %  60;
-//    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours ,minutes, seconds];
+    int seconds = (timeSince % 60);
+
     if (days > 0) {
         return [NSString stringWithFormat:@"%01dd",days];
     }
     else if (hours == 0) {
-        return [NSString stringWithFormat:@"%01dm", minutes];
+        if (minutes > 0) {
+            return [NSString stringWithFormat:@"%01dm", minutes];
+        } else{
+            return [NSString stringWithFormat:@"%01ds", seconds];
+        }
     }
     else {
         return [NSString stringWithFormat:@"%01dh", hours];
