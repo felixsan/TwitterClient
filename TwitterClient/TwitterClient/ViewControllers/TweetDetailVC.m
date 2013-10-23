@@ -63,6 +63,8 @@
     }
 }
 
+#pragma mark - Tweet Operation Methods
+
 - (IBAction)retweet:(id)sender {
     [[TwitterNetworkClient client] retweetStatusWithId:self.tweet.tweetId
                                                success:^(AFHTTPRequestOperation *operation, id response) {
@@ -90,6 +92,8 @@
         [self errorWithMessage: @"There was an error favoriting/unfavoriting this Tweet"];
     }];
 }
+
+#pragma mark - Helper Methods
 
 - (void)errorWithMessage:(NSString *)errorMessage {
     [[[UIAlertView alloc] initWithTitle:@"Woops!" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

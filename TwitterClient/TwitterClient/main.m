@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Felix Santiago. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #import "TCAppDelegate.h"
 
 int main(int argc, char * argv[])

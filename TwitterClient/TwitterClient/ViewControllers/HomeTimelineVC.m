@@ -73,7 +73,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-#pragma mark - Table view data source
+#pragma mark - TableView Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -81,12 +81,14 @@
     return [self.tweets count];
 }
 
+#pragma mark - TableView Delegate Methods
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
 
     // Configure the cell...
-    Tweet *tweet = self.tweets[indexPath.row];
+    Tweet *tweet = self.tweets[(NSUInteger) indexPath.row];
 
     cell.tweetText.text = tweet.text;
     cell.authorName.text = tweet.authorName;
@@ -117,8 +119,16 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)t heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *text = [[self.tweets objectAtIndex:(NSUInteger) indexPath.row] text];
+    CGSize textSize = [text sizeWithFont:[UIFont systemFontOfSize:14.0f]
+                       constrainedToSize:CGSizeMake(self.tableView.frame.size.width - 90, 1000.0f)];
+    CGFloat calculatedSize = textSize.height + 55;
+    CGFloat minSize = 78;
+    return calculatedSize > minSize ? calculatedSize : minSize;
+}
 
-#pragma mark - Navigation
+#pragma mark - Segueway Methods
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -131,6 +141,15 @@
     }
 }
 
+- (IBAction)logout:(id)sender {
+    NSLog(@"Hit logout");
+    [User setCurrentUser:nil];
+    SignupViewController *svc = [[SignupViewController alloc] init];
+    [self presentViewController:svc animated:YES completion:nil];
+
+}
+
+#pragma mark - Timeline related Methods
 
 - (void)getNewTweets {
     NSString *sinceID = [self.tweets count] > 0 ? [[self.tweets objectAtIndex:0] tweetId] : @"0";
@@ -191,23 +210,6 @@
     }                                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"ERROR - %@", error);
     }];
-}
-
-- (IBAction)logout:(id)sender {
-    NSLog(@"Hit logout");
-    [User setCurrentUser:nil];
-    SignupViewController *svc = [[SignupViewController alloc] init];
-    [self presentViewController:svc animated:YES completion:nil];
-
-}
-
-- (CGFloat)tableView:(UITableView *)t heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *text = [[self.tweets objectAtIndex:(NSUInteger) indexPath.row] text];
-    CGSize textSize = [text sizeWithFont:[UIFont systemFontOfSize:14.0f]
-                       constrainedToSize:CGSizeMake(self.tableView.frame.size.width - 90, 1000.0f)];
-    CGFloat calculatedSize = textSize.height + 55;
-    CGFloat minSize = 78;
-    return calculatedSize > minSize ? calculatedSize : minSize;
 }
 
 @end

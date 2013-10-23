@@ -32,6 +32,7 @@
     [super viewDidLoad];
     if (self.inReplyTo) {
         self.statusText.text = [[NSString alloc] initWithFormat:@"@%@ ", self.inReplyTo];
+        [self textViewDidChange:self.statusText];
     }
     [self.statusText becomeFirstResponder];
     self.tweetButton.enabled = NO;
@@ -41,7 +42,6 @@
 - (IBAction)dismissView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 - (void)textViewDidChange:(UITextView *)textView
 {
@@ -56,7 +56,6 @@
     self.tweetButton.enabled = !(charCount > 140 || charCount == 0);
 }
 
-
 - (IBAction)postUpdate:(id)sender {
     // Get text from text view
     Tweet *newStatus = [Tweet buildTweetFromStatus:self.statusText.text];
@@ -65,22 +64,31 @@
         [[TwitterNetworkClient client] postUpdateWithStatus:newStatus.text
                                                   inReplyTo:self.replyTweetId
                                                     success:^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"%@", response);
+//        NSLog(@"%@", response);
         [self.view endEditing:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
                                                     }
                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"ERROR - %@", error);
+//        NSLog(@"ERROR - %@", error);
         [self onError];
                 }];
     } else {
         // Come up with an error stating that it is too long and the calculated length
         NSLog(@"Status is too long - %d", newStatus.characterCount);
+        [[[UIAlertView alloc] initWithTitle:@"Sorry!"
+                                    message:@"You're Tweet is too long, please shorten it and try again."
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
     }
 }
 
 - (void)onError {
-    [[[UIAlertView alloc] initWithTitle:@"Woops!" message:@"There was a publishing your tweet, please try again!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    [[[UIAlertView alloc] initWithTitle:@"Woops!"
+                                message:@"There was a publishing your tweet, please try again!"
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
 }
 
 @end

@@ -22,13 +22,9 @@
 @property (nonatomic, readonly, getter=isFavorite) BOOL favorited;
 @property (nonatomic, readonly, getter=isRetweeted) BOOL retweeted;
 @property (nonatomic) int characterCount;
+
 + (NSMutableArray *)tweetsFromArray:(NSArray *)array;
-
-- (BOOL)favorited;
-
 + (BOOL)isValidTweet:(Tweet *)tweet;
-
 + (Tweet *)buildTweetFromStatus:(NSString *)statusText;
-
 + (Tweet *)buildTweetFromResponse:(NSDictionary *)statusText;
 @end

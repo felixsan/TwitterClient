@@ -6,7 +6,6 @@
 
 #import "TwitterNetworkClient.h"
 #import "AFNetworking.h"
-#import "AFHTTPRequestOperation.h"
 
 #define TWITTER_BASE_URL [NSURL URLWithString:@"https://api.twitter.com/"]
 #define TWITTER_CONSUMER_KEY @"yi8Fw3QXXJf5ftT5WTuLww"
@@ -120,8 +119,6 @@ static NSString * const TWAccessTokenKey = @"TWAccessToken";
     [self postPath:path parameters:params success:success failure:failure];
 
 }
-
-
 
 #pragma mark - Private methods
 

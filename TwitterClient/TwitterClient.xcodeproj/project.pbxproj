@@ -29,12 +29,10 @@
 		D890E46B81408D99503E3B65 /* TwitterNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D890EABCD66E21C3D38B73EC /* TwitterNetworkClient.m */; };
 		D890E4DF84E7007132C78565 /* NSDictionary+CPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E1792A1CCE5967798F67 /* NSDictionary+CPAdditions.m */; };
 		D890E5021A0383C134DB6764 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E101766910722F689629 /* Profile.m */; };
-		D890E5E9118033C2F743422D /* CredentialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D890EECB1F0A03F0177829EC /* CredentialCell.xib */; };
 		D890E6ED7D3744AFA44B3DC1 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E47B9AD52A888E8BE021 /* SignupViewController.m */; };
 		D890E82F74D441B49835D9D4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E4AF9DBEE4AE008BDB7E /* User.m */; };
 		D890E9366082DA19BD17EFF5 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D890EB26F0B4B5A99991AF1F /* SignupViewController.xib */; };
 		D890E9832055710C2A63763B /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E9EDCB2C80C11596A0B4 /* TweetCell.m */; };
-		D890EBA83F4F2D2B66F67A58 /* CredentialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E16F1F65DC9BA0039BE4 /* CredentialCell.m */; };
 		D890ECAEEF1BBE6FDED85E38 /* UserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E4F2658589E6FF662BE6 /* UserProfileVC.m */; };
 		D890ECEDC09D3C78ABE840AF /* UIColor+TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D890EDA4D6FC7B399CFC4233 /* UIColor+TwitterClient.m */; };
 		D890EDA74454BECB45F0523A /* RestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D890E07EC9D27029D0545DF2 /* RestObject.m */; };
@@ -79,10 +77,8 @@
 		90EE17581815683D006D7C3F /* ComposeTweetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeTweetVC.h; sourceTree = "<group>"; };
 		90EE17591815683D006D7C3F /* ComposeTweetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeTweetVC.m; sourceTree = "<group>"; };
 		D890E07EC9D27029D0545DF2 /* RestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestObject.m; sourceTree = "<group>"; };
-		D890E0EE9B556F5C6C163A73 /* CredentialCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialCell.h; sourceTree = "<group>"; };
 		D890E101766910722F689629 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		D890E16361E5E3B49604D567 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		D890E16F1F65DC9BA0039BE4 /* CredentialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialCell.m; sourceTree = "<group>"; };
 		D890E1792A1CCE5967798F67 /* NSDictionary+CPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CPAdditions.m"; sourceTree = "<group>"; };
 		D890E239B6768F8C5B19B1F9 /* TweetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		D890E3414410F4AE9842925E /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
@@ -101,7 +97,6 @@
 		D890EB26F0B4B5A99991AF1F /* SignupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
 		D890EBDC7E2585B1B29D4121 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		D890EDA4D6FC7B399CFC4233 /* UIColor+TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TwitterClient.m"; sourceTree = "<group>"; };
-		D890EECB1F0A03F0177829EC /* CredentialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CredentialCell.xib; sourceTree = "<group>"; };
 		D890EF4F1E92C0C3F766C286 /* UserProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileVC.h; sourceTree = "<group>"; };
 		D890EFA1E96AFE2B80F858C7 /* RestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestObject.h; sourceTree = "<group>"; };
 		D890EFC626239B4E4E6FC123 /* HomeTimelineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTimelineVC.h; sourceTree = "<group>"; };
@@ -243,9 +238,6 @@
 		D890E9B78F63AA49BD1C1F6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D890EECB1F0A03F0177829EC /* CredentialCell.xib */,
-				D890E0EE9B556F5C6C163A73 /* CredentialCell.h */,
-				D890E16F1F65DC9BA0039BE4 /* CredentialCell.m */,
 				D890EB26F0B4B5A99991AF1F /* SignupViewController.xib */,
 				D890E239B6768F8C5B19B1F9 /* TweetCell.xib */,
 				D890E7819BA65E5B69908EF1 /* TweetCell.h */,
@@ -361,7 +353,6 @@
 				9088B70D181308B6004FE80F /* Images.xcassets in Resources */,
 				9088B6FC181308B6004FE80F /* InfoPlist.strings in Resources */,
 				9088B705181308B6004FE80F /* Main.storyboard in Resources */,
-				D890E5E9118033C2F743422D /* CredentialCell.xib in Resources */,
 				D890E9366082DA19BD17EFF5 /* SignupViewController.xib in Resources */,
 				9013A0431814D1C00004D3E1 /* twitter-bird-dark-bgs.png in Resources */,
 				D890EF3275AA6BEC8D45B499 /* TweetCell.xib in Resources */,
@@ -422,7 +413,6 @@
 				D890E5021A0383C134DB6764 /* Profile.m in Sources */,
 				D890E2F07B1BE4219E3C58F9 /* HomeTimelineVC.m in Sources */,
 				D890ECAEEF1BBE6FDED85E38 /* UserProfileVC.m in Sources */,
-				D890EBA83F4F2D2B66F67A58 /* CredentialCell.m in Sources */,
 				D890E6ED7D3744AFA44B3DC1 /* SignupViewController.m in Sources */,
 				90EE175A1815683D006D7C3F /* ComposeTweetVC.m in Sources */,
 				9013A0461815024C0004D3E1 /* TweetDetailVC.m in Sources */,
