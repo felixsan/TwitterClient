@@ -70,7 +70,8 @@
                                                success:^(AFHTTPRequestOperation *operation, id response) {
        NSLog(@"Response - %@", response);
        self.tweet = [Tweet buildTweetFromResponse:response];
-       [self updateUIElements];
+       NSString *buttonText = self.tweet.isRetweeted ? @"Retweeted" : @"Retweet";
+       [self.retweetButton setTitle:buttonText forState:UIControlStateNormal];
                                                }
                                                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
        NSLog(@"ERROR - %@", error);
@@ -85,7 +86,8 @@
                                     forTweetId:self.tweet.tweetId
                                        success:^(AFHTTPRequestOperation *operation, id response) {
        self.tweet = [Tweet buildTweetFromResponse:response];
-       [self updateUIElements];
+       NSString *buttonText = self.tweet.isFavorite ? @"☆ Unfavorite" : @"★ Favorite";
+       [self.favoriteButton setTitle:buttonText forState:UIControlStateNormal];
                                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"ERROR - %@", error);
         // TODO Actually parse the error message and display it to the user.
@@ -103,8 +105,8 @@
     self.authorName.text = self.tweet.authorName;
     self.authorHandle.text = [NSString stringWithFormat:@"@%@", self.tweet.authorHandle];
     self.tweetText.text = self.tweet.text;
-//    self.favorites.text = [NSString stringWithFormat:@"%d", self.tweet.numFavorites];
-//    self.retweets.text = [NSString stringWithFormat:@"%d", self.tweet.numRetweets];
+    self.favorites.text = [NSString stringWithFormat:@"%d", self.tweet.numFavorites];
+    self.retweets.text = [NSString stringWithFormat:@"%d", self.tweet.numRetweets];
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateStyle:NSDateFormatterShortStyle];
